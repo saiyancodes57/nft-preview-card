@@ -1,0 +1,203 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;600&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+:root {
+  --font-outfit: "Outfit", sans-serif;
+
+  /* Whites and Blacks */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Blues */
+  --color-blue-950: #0d192c;
+  --color-blue-900: #15263f;
+  --color-blue-800: #2e405a;
+  --color-blue-500: #8bacd9;
+
+  /* Cyan */
+  --color-cyan-400: #00fff8;
+
+  /* Spacing Scale (based on 16px root) */
+  --spacing-0: 0rem; /* 0px */
+  --spacing-100: 0.5rem; /* 8px */
+  --spacing-200: 1rem; /* 16px */
+  --spacing-300: 1.5rem; /* 24px */
+}
+
+/* Base Styles */
+.text-preset-1 {
+  font-weight: 600; /* SemiBold */
+  font-size: 1.375rem;
+  line-height: 125%;
+  letter-spacing: 0;
+}
+
+.text-preset-2 {
+  font-weight: 300; /* Light */
+  font-size: 1.125rem;
+  line-height: 145%;
+  letter-spacing: 0;
+}
+
+.text-preset-3-semibold {
+  font-weight: 600; /* SemiBold */
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0;
+}
+
+.text-preset-3-regular {
+  font-weight: 400; /* Regular */
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0;
+}
+
+body {
+  font-family: var(--font-outfit);
+  background-color: var(--color-blue-950);
+  padding: 2.25rem 0.875rem;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  background-color: var(--color-blue-900);
+  padding: var(--spacing-300);
+  border-radius: 0.9375rem;
+  max-width: 21.875rem;
+}
+
+.image-container {
+  position: relative;
+
+  > img {
+    margin-block-end: var(--spacing-300);
+    border-radius: 0.5rem;
+  }
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+
+  /* Start fully transparent */
+  background-color: rgb(0 255 247 / 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Animate the background color only */
+  transition: background-color 0.5s ease;
+
+  > img {
+    width: 2.75rem;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+}
+
+.pricing-section {
+  margin-block: var(--spacing-300);
+  display: flex;
+  justify-content: space-between;
+}
+
+.pricing {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+
+  img {
+    width: 11px;
+    margin-bottom: 0;
+  }
+
+  .price {
+    color: var(--color-cyan-400);
+  }
+}
+
+.time-left {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-100);
+
+  img {
+    width: 1.25rem;
+  }
+
+  span {
+    color: var(--color-blue-500);
+  }
+}
+
+.creator-section {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+
+  img {
+    width: 2rem;
+  }
+
+  .creator-prefix {
+    color: var(--color-blue-500);
+  }
+
+  .name {
+    color: var(--color-white);
+    transition: color 0.5s ease;
+    font-weight: normal;
+    margin-inline-start: var(--spacing-100);
+  }
+}
+
+.image-container:hover .overlay > img {
+  opacity: 1;
+}
+
+.image-container:hover .overlay {
+  background-color: rgb(0 255 247 / 50%);
+}
+
+.title {
+  color: var(--color-white);
+  transition: color 0.5s ease;
+  margin-block: var(--spacing-200);
+}
+
+.description {
+  color: var(--color-blue-500);
+}
+
+.divider {
+  border: none;
+  height: 1px;
+  background-color: var(--color-blue-800);
+  margin-block-end: var(--spacing-300);
+}
+
+main:has(.image-container:hover) .title,
+main:has(.image-container:hover) .creator-section .name {
+  color: var(--color-cyan-400);
+}
